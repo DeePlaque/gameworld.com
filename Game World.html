@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game World - Play and Explore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4B9BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .game-card {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;  /* Stacks the content vertically */
+            justify-content: flex-start;  /* Ensures the content starts at the top */
+        }
+        .game-card img {
+            width: 100%;
+            height: 200px;  /* Set the height for the image */
+            object-fit: cover;
+        }
+        .game-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #4B9BFF;
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .back-to-games {
+            display: inline-block;
+            padding: 10px;
+            background-color: #4B9BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Game World</h1>
+        <p>Explore, Play and Enjoy Games!</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#" id="profile-btn">Profile</a>
+    </nav>
+
+    <!-- Main Game Section -->
+    <div class="container">
+        <!-- Game Cards -->
+        <div class="game-card">
+            <a href="https://poki.com/en/g/subway-surfers" target="_blank" onclick="trackClick()">
+                <img src="https://logodix.com/logo/260585.png" alt="Subway Surfers">
+                <h3>Subway Surfers</h3>
+            </a>
+        </div>
+        <div class="game-card">
+            <a href="https://1v1.lol/" target="_blank" onclick="trackClick()">
+                <img src="https://classroom6x.app/wp-content/uploads/2024/04/1V1.lol_.jpg" alt="1v1.LOL">
+                <h3>1v1.LOL</h3>
+            </a>
+        </div>
+        <div class="game-card">
+            <a href="https://agar.io/" target="_blank" onclick="trackClick()">
+                <img src="https://th.bing.com/th/id/R.0176f002520463cc1f8dd43dcdf04014?rik=nHiaag3d4FPbbA&riu=http%3a%2f%2forig14.deviantart.net%2f8710%2ff%2f2015%2f191%2f9%2fd%2fagar_io_by_nonedesings-d90oty9.png&ehk=ZpW7pPKvobqICgDK2qsWtUwtWB13Pm5KrhIYvRTZM%2fg%3d&risl=&pid=ImgRaw&r=0" alt="Agar.io">
+                <h3>Agar.io</h3>
+            </a>
+        </div>
+        <div class="game-card">
+            <a href="http://slither.io" target="_blank" onclick="trackClick()">
+                <img src="https://play-lh.googleusercontent.com/CIhYMQRYYtxZPCNNkJOI5EKp6nO10Cjoq6sGW_y-02AilCm2zqwttHhNSeoCwysK_w" alt="Slither.io">
+                <h3>Slither.io</h3>
+            </a>
+        </div>
+        <div class="game-card">
+            <a href="https://www.miniclip.com/games/basketball-stars/en/" target="_blank" onclick="trackClick()">
+                <img src="https://static.vecteezy.com/system/resources/previews/000/259/503/original/all-star-basketball-logo-vector.jpg" alt="Basketball Stars">
+                <h3>Basketball Stars</h3>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Game World - Made by Emmanuel</p>
+    </footer>
+
+    <!-- Modal for Profile -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="profile-info">
+                <img id="profile-img" class="profile-pic" src="" alt="Profile Picture">
+                <div>
+                    <h2>Your Profile</h2>
+                    <p>Total Game Clicked: <span id="games-clicked-count">0</span></p>
+                </div>
+            </div>
+            <button class="back-to-games" onclick="closeModal()">Back to Games</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        var modal = document.getElementById("profile-modal");
+        var btn = document.getElementById("profile-btn");
+        var span = document.getElementsByClassName("close")[0];
+
+        // Array of cartoon profile images
+        const profileImages = [
+            '',
+            '',
+            '',
+            '',
+            ''
+        ];
+
+        // Get a random profile picture for each user
+        function getRandomProfilePic() {
+            const randomIndex = Math.floor(Math.random() * profileImages.length);
+            return profileImages[randomIndex];
+        }
+
+        // Save profile picture to localStorage if not already set
+        function saveProfilePicture() {
+            const profilePic = localStorage.getItem('profilePic');
+            if (!profilePic) {
+                const newProfilePic = getRandomProfilePic();
+                localStorage.setItem('profilePic', newProfilePic);
+                document.getElementById('profile-img').src = newProfilePic;
+            } else {
+                document.getElementById('profile-img').src = profilePic;
+            }
+        }
+
+        // Track game clicks
+        let totalClicks = 0;
+        function trackClick() {
+            totalClicks++;
+            document.getElementById("games-clicked-count").innerText = totalClicks;
+        }
+
+        // When the user clicks the Profile link, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+            saveProfilePicture();
+        }
+
+        // When the user clicks on the "X" button, close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to close the modal and return to the games
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Call saveProfilePicture on page load to set profile picture
+        window.onload = function() {
+            saveProfilePicture();
+        }
+    </script>
+</body>
+</html>
